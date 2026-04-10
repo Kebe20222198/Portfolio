@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.2.0" type="partial_results">
+    <map id="UnsafeIntentLaunch">
+            <map id="unprotected">
+                <entry
+                    name="com.portfolio.app.SplashActivity"
+                    boolean="true"/>
+            </map>
+    </map>
+    <map id="UnsafeImplicitIntentLaunch">
+            <map id="actionsSent">
+                    <map id="android.intent.action.VIEW (used to start an activity)">
+                        <location id="0"
+                            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/portfolio/app/ContactFragment.java"
+                            line="23"
+                            column="29"
+                            startOffset="1128"
+                            endLine="23"
+                            endColumn="114"
+                            endOffset="1213"/>
+                    </map>
+                    <map id="android.intent.action.DIAL (used to start an activity)">
+                        <location id="0"
+                            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/portfolio/app/ContactFragment.java"
+                            line="19"
+                            column="29"
+                            startOffset="920"
+                            endLine="19"
+                            endColumn="91"
+                            endOffset="982"/>
+                    </map>
+            </map>
+    </map>
+    <map id="UnusedResources">
+        <location id="R.string.app_name"
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="3"
+            column="13"
+            startOffset="63"
+            endLine="3"
+            endColumn="28"
+            endOffset="78"/>
+        <location id="R.color.blue_light"
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/colors.xml"
+            line="6"
+            column="12"
+            startOffset="199"
+            endLine="6"
+            endColumn="29"
+            endOffset="216"/>
+        <entry
+            name="model"
+            string="color[navy_dark(U),green(U),blue_primary(U),text_primary(U),progress_bg(U),light_gray(U),blue_light(D),white(U),text_secondary(U),navy_medium(D)],drawable[card_project_bg(U),progress_blue(U),splash_bg(U),circle_photo(U)],id[btnConfirmer(U),nav_profil(U),nav_projets(U),tvPhone(U),rdv_email(D),btnQRCode(U),viewColor(U),tvTitre(U),btnDemarrer(U),btnRDV(U),btn14h(U),rdv_name(D),btn10h(U),btnEnvoyer(U),btn1130(U),tvTags(U),tvFacebook(U),nav_contact(D),nav_competences(U),bottom_nav(U),qrcode_preview(U),btnDetails(U),rdv_phone(D),qrcode_scan(U),fragment_container(U),calendarView(U),tvDescription(U),recyclerProjets(U),rdv_subject(D)],layout[fragment_competences(U),item_projet(U),activity_qrcode(U),fragment_profil(U),activity_main(U),fragment_contact(U),fragment_projets(U),activity_rendez_vous(U),activity_splash(U)],menu[bottom_nav_menu(U)],string[app_name(D)],style[Theme_AppCompat_Light_DarkActionBar(R)];2b^5^3^2^b^1,2c^a^3^8^2,2e^5^c^d^7^4^8^3^2^a^0,2f^7^2^34,30^5^3^8^2,31^5^3,33^c^7^2;;;"/>
+        <location id="R.color.navy_medium"
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/colors.xml"
+            line="4"
+            column="12"
+            startOffset="106"
+            endLine="4"
+            endColumn="30"
+            endOffset="124"/>
+    </map>
+
+</incidents>

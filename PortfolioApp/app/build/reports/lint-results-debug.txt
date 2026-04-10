@@ -1,0 +1,468 @@
+/workspaces/Portfolio/PortfolioApp/app/src/main/java/com/portfolio/app/SplashActivity.java:6: Warning: The application should not provide its own launch screen [CustomSplashScreen]
+public class SplashActivity extends AppCompatActivity {
+             ~~~~~~~~~~~~~~
+
+   Explanation for issues of type "CustomSplashScreen":
+   Starting in Android 12 (API 31+), the application's Launch Screen is
+   provided by the system and the application should not create its own,
+   otherwise the user will see two splashscreens. Please check the
+   SplashScreen class to check how the Splash Screen can be controlled and
+   customized.
+
+   https://developer.android.com/guide/topics/ui/splash-screen
+
+/workspaces/Portfolio/PortfolioApp/app/build.gradle:23: Warning: A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.1 [GradleDependency]
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/build.gradle:24: Warning: A newer version of com.google.android.material:material than 1.11.0 is available: 1.13.0 [GradleDependency]
+    implementation 'com.google.android.material:material:1.11.0'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/build.gradle:25: Warning: A newer version of androidx.constraintlayout:constraintlayout than 2.1.4 is available: 2.2.1 [GradleDependency]
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:29: Warning: This tag and its children can be replaced by one <TextView/> and a compound drawable [UseCompoundDrawables]
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+             ~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:37: Warning: This tag and its children can be replaced by one <TextView/> and a compound drawable [UseCompoundDrawables]
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+             ~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:45: Warning: This tag and its children can be replaced by one <TextView/> and a compound drawable [UseCompoundDrawables]
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+             ~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:53: Warning: This tag and its children can be replaced by one <TextView/> and a compound drawable [UseCompoundDrawables]
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+             ~~~~~~~~~~~~
+
+   Explanation for issues of type "UseCompoundDrawables":
+   A LinearLayout which contains an ImageView and a TextView can be more
+   efficiently handled as a compound drawable (a single TextView, using the
+   drawableTop, drawableLeft, drawableRight and/or drawableBottom attributes
+   to draw one or more images adjacent to the text).
+
+   If the two widgets are offset from each other with margins, this can be
+   replaced with a drawablePadding attribute.
+
+   There's a lint quickfix to perform this conversion in the Eclipse plugin.
+
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:26: Warning: Set android:baselineAligned="false" on this element for better performance [DisableBaselineAlignment]
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+         ~~~~~~~~~~~~
+
+   Explanation for issues of type "DisableBaselineAlignment":
+   When a LinearLayout is used to distribute the space proportionally between
+   nested layouts, the baseline alignment property should be turned off to
+   make the layout computation faster.
+
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:5: Warning: Possible overdraw: Root element paints background @color/light_gray with a theme that also paints a background (inferred theme is @style/Theme.AppCompat.Light.DarkActionBar) [Overdraw]
+    android:background="@color/light_gray">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:5: Warning: Possible overdraw: Root element paints background @color/light_gray with a theme that also paints a background (inferred theme is @style/Theme.AppCompat.Light.DarkActionBar) [Overdraw]
+    android:background="@color/light_gray">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:6: Warning: Possible overdraw: Root element paints background @color/light_gray with a theme that also paints a background (inferred theme is @style/Theme.AppCompat.Light.DarkActionBar) [Overdraw]
+    android:background="@color/light_gray">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_projets.xml:4: Warning: Possible overdraw: Root element paints background @color/light_gray with a theme that also paints a background (inferred theme is @style/Theme.AppCompat.Light.DarkActionBar) [Overdraw]
+    android:orientation="vertical" android:background="@color/light_gray">
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "Overdraw":
+   If you set a background drawable on a root view, then you should use a
+   custom theme where the theme background is null. Otherwise, the theme
+   background will be painted first, only to have your custom background
+   completely cover it; this is called "overdraw".
+
+   NOTE: This detector relies on figuring out which layouts are associated
+   with which activities based on scanning the Java code, and it's currently
+   doing that using an inexact pattern matching algorithm. Therefore, it can
+   incorrectly conclude which activity the layout is associated with and then
+   wrongly complain that a background-theme is hidden.
+
+   If you want your custom background on multiple pages, then you should
+   consider making a custom theme with your custom background and just using
+   that theme instead of a root element background.
+
+   Of course it's possible that your custom drawable is translucent and you
+   want it to be mixed with the background. However, you will get better
+   performance if you pre-mix the background with your drawable and use that
+   resulting image or color as a custom theme background instead.
+
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/values/colors.xml:4: Warning: The resource R.color.navy_medium appears to be unused [UnusedResources]
+    <color name="navy_medium">#1A2E4A</color>
+           ~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/values/colors.xml:6: Warning: The resource R.color.blue_light appears to be unused [UnusedResources]
+    <color name="blue_light">#1E88E5</color>
+           ~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/values/strings.xml:3: Warning: The resource R.string.app_name appears to be unused [UnusedResources]
+    <string name="app_name">Portfolio</string>
+            ~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UnusedResources":
+   Unused resources make applications larger and slow down builds.
+
+
+   The unused resource check can ignore tests. If you want to include
+   resources that are only referenced from tests, consider packaging them in a
+   test source set instead.
+
+   You can include test sources in the unused resource check by setting the
+   system property lint.unused-resources.include-tests =true, and to exclude
+   them (usually for performance reasons), use
+   lint.unused-resources.exclude-tests =true.
+   ,
+
+/workspaces/Portfolio/PortfolioApp/app/src/main/AndroidManifest.xml:3: Warning: Should explicitly set android:icon, there is no default [MissingApplicationIcon]
+    <application
+     ~~~~~~~~~~~
+
+   Explanation for issues of type "MissingApplicationIcon":
+   You should set an icon for the application as whole because there is no
+   default. This attribute must be set as a reference to a drawable resource
+   containing the image (for example @drawable/icon).
+
+   https://developer.android.com/studio/publish/preparing#publishing-configure
+
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:40: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+            <Button
+             ~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:48: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+            <Button
+             ~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:56: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+            <Button
+             ~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:102: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+            <Button android:id="@+id/btnQRCode"
+             ~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:105: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+            <Button android:id="@+id/btnRDV"
+             ~~~~~~
+
+   Explanation for issues of type "ButtonStyle":
+   Button bars typically use a borderless style for the buttons. Set the
+   style="?android:attr/buttonBarButtonStyle" attribute on each of the
+   buttons, and set style="?android:attr/buttonBarStyle" on the parent layout
+
+   https://d.android.com/r/studio-ui/designer/material/dialogs
+
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:64: Warning: Missing autofillHints attribute [Autofill]
+        <EditText
+         ~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:73: Warning: Missing autofillHints attribute [Autofill]
+        <EditText
+         ~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:82: Warning: Missing autofillHints attribute [Autofill]
+        <EditText
+         ~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:91: Warning: Missing autofillHints attribute [Autofill]
+        <EditText
+         ~~~~~~~~
+
+   Explanation for issues of type "Autofill":
+   Specify an autofillHints attribute when targeting SDK version 26 or higher
+   or explicitly specify that the view is not important for autofill. Your app
+   can help an autofill service classify the data correctly by providing the
+   meaning of each view that could be autofillable, such as views representing
+   usernames, passwords, credit card fields, email addresses, etc.
+
+   The hints can have any value, but it is recommended to use predefined
+   values like 'username' for a username or 'creditCardNumber' for a credit
+   card number. For a list of all predefined autofill hint constants, see the
+   AUTOFILL_HINT_ constants in the View reference at
+   https://developer.android.com/reference/android/view/View.html.
+
+   You can mark a view unimportant for autofill by specifying an
+   importantForAutofill attribute on that view or a parent view. See
+   https://developer.android.com/reference/android/view/View.html#setImportant
+   ForAutofill(int).
+
+   https://developer.android.com/guide/topics/text/autofill.html
+
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_splash.xml:7: Warning: Missing contentDescription attribute on image [ContentDescription]
+    <ImageView android:layout_width="120dp" android:layout_height="120dp"
+     ~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:12: Warning: Missing contentDescription attribute on image [ContentDescription]
+            <ImageView android:layout_width="90dp" android:layout_height="90dp"
+             ~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:31: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView android:layout_width="40dp" android:layout_height="40dp"
+                 ~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:39: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView android:layout_width="40dp" android:layout_height="40dp"
+                 ~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:47: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView android:layout_width="40dp" android:layout_height="40dp"
+                 ~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:55: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView android:layout_width="40dp" android:layout_height="40dp"
+                 ~~~~~~~~~
+
+   Explanation for issues of type "ContentDescription":
+   Non-textual widgets like ImageViews and ImageButtons should use the
+   contentDescription attribute to specify a textual description of the widget
+   such that screen readers and other accessibility tools can adequately
+   describe the user interface.
+
+   Note that elements in application screens that are purely decorative and do
+   not provide any content or enable a user action should not have
+   accessibility content descriptions. In this case, set their descriptions to
+   @null. If your app's minSdkVersion is 16 or higher, you can instead set
+   these graphical elements' android:importantForAccessibility attributes to
+   no.
+
+   Note that for text fields, you should not set both the hint and the
+   contentDescription attributes since the hint will never be shown. Just set
+   the hint.
+
+   https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases
+
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_qrcode.xml:12: Warning: Hardcoded string "Scanneur QR Code", should use @string resource [HardcodedText]
+        android:text="Scanneur QR Code"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_qrcode.xml:23: Warning: Hardcoded string "Aperçu QR Code", should use @string resource [HardcodedText]
+        android:contentDescription="Aperçu QR Code" />
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_qrcode.xml:29: Warning: Hardcoded string "Numériser", should use @string resource [HardcodedText]
+        android:text="Numériser" />
+        ~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:15: Warning: Hardcoded string "Prendre un Rendez-vous", should use @string resource [HardcodedText]
+            android:text="Prendre un Rendez-vous"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:29: Warning: Hardcoded string "Créneaux disponibles :", should use @string resource [HardcodedText]
+            android:text="Créneaux disponibles :"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:45: Warning: Hardcoded string "10:00", should use @string resource [HardcodedText]
+                android:text="10:00"
+                ~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:53: Warning: Hardcoded string "11:30", should use @string resource [HardcodedText]
+                android:text="11:30"
+                ~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:61: Warning: Hardcoded string "14:00", should use @string resource [HardcodedText]
+                android:text="14:00" />
+                ~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:68: Warning: Hardcoded string "Votre nom", should use @string resource [HardcodedText]
+            android:hint="Votre nom"
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:77: Warning: Hardcoded string "Votre email", should use @string resource [HardcodedText]
+            android:hint="Votre email"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:86: Warning: Hardcoded string "Votre téléphone", should use @string resource [HardcodedText]
+            android:hint="Votre téléphone"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:95: Warning: Hardcoded string "Sujet de la réunion", should use @string resource [HardcodedText]
+            android:hint="Sujet de la réunion"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_rendez_vous.xml:104: Warning: Hardcoded string "Confirmer", should use @string resource [HardcodedText]
+            android:text="Confirmer" />
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_splash.xml:11: Warning: Hardcoded string "MY PORTFOLIO", should use @string resource [HardcodedText]
+        android:text="MY PORTFOLIO" android:textColor="@color/white"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_splash.xml:15: Warning: Hardcoded string "Développeur Android", should use @string resource [HardcodedText]
+        android:text="Développeur Android" android:textColor="#B0C4DE"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/activity_splash.xml:19: Warning: Hardcoded string "DÉMARRER", should use @string resource [HardcodedText]
+        android:text="DÉMARRER" android:textColor="@color/white"
+        ~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/menu/bottom_nav_menu.xml:6: Warning: Hardcoded string "Profil", should use @string resource [HardcodedText]
+        android:title="Profil" />
+        ~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/menu/bottom_nav_menu.xml:10: Warning: Hardcoded string "Compétences", should use @string resource [HardcodedText]
+        android:title="Compétences" />
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/menu/bottom_nav_menu.xml:14: Warning: Hardcoded string "Projets", should use @string resource [HardcodedText]
+        android:title="Projets" />
+        ~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/menu/bottom_nav_menu.xml:18: Warning: Hardcoded string "Contact", should use @string resource [HardcodedText]
+        android:title="Contact" />
+        ~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:9: Warning: Hardcoded string "Mes Compétences", should use @string resource [HardcodedText]
+            android:text="Mes Compétences" android:textSize="24sp" android:textStyle="bold"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:18: Warning: Hardcoded string "Compétences Techniques", should use @string resource [HardcodedText]
+                    android:text="Compétences Techniques" android:textSize="16sp" android:textStyle="bold"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:21: Warning: Hardcoded string "Java", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Java" android:textSize="14sp"/>
+                                                                                                                        ~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:22: Warning: Hardcoded string "90%", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="90%" android:textSize="14sp" android:textColor="@color/blue_primary" android:textStyle="bold"/>
+                                                                                                       ~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:26: Warning: Hardcoded string "Kotlin", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Kotlin" android:textSize="14sp"/>
+                                                                                                                        ~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:27: Warning: Hardcoded string "80%", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="80%" android:textSize="14sp" android:textColor="@color/blue_primary" android:textStyle="bold"/>
+                                                                                                       ~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:31: Warning: Hardcoded string "Python", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Python" android:textSize="14sp"/>
+                                                                                                                        ~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:32: Warning: Hardcoded string "70%", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="70%" android:textSize="14sp" android:textColor="@color/blue_primary" android:textStyle="bold"/>
+                                                                                                       ~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:36: Warning: Hardcoded string "SQL", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="SQL" android:textSize="14sp"/>
+                                                                                                                        ~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:37: Warning: Hardcoded string "75%", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="75%" android:textSize="14sp" android:textColor="@color/blue_primary" android:textStyle="bold"/>
+                                                                                                       ~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:48: Warning: Hardcoded string "Soft Skills", should use @string resource [HardcodedText]
+                    android:text="Soft Skills" android:textSize="16sp" android:textStyle="bold"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:51: Warning: Hardcoded string "Gestion de Projet", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Gestion de Projet" android:textSize="14sp"/>
+                                                                                                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:52: Warning: Hardcoded string "85%", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="85%" android:textSize="14sp" android:textColor="@color/green" android:textStyle="bold"/>
+                                                                                                       ~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:56: Warning: Hardcoded string "Travail en Équipe", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Travail en Équipe" android:textSize="14sp"/>
+                                                                                                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:57: Warning: Hardcoded string "80%", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="80%" android:textSize="14sp" android:textColor="@color/green" android:textStyle="bold"/>
+                                                                                                       ~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:61: Warning: Hardcoded string "Communication", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Communication" android:textSize="14sp"/>
+                                                                                                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_competences.xml:62: Warning: Hardcoded string "85%", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="85%" android:textSize="14sp" android:textColor="@color/green" android:textStyle="bold"/>
+                                                                                                       ~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:9: Warning: Hardcoded string "Contact", should use @string resource [HardcodedText]
+            android:text="Contact" android:textSize="24sp" android:textStyle="bold"
+            ~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:17: Warning: Hardcoded string "📧 ", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📧 " android:textSize="20sp"/>
+                                                                                                       ~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:19: Warning: Hardcoded string "Email", should use @string resource [HardcodedText]
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Email" android:textSize="12sp" android:textColor="@color/text_secondary"/>
+                                                                                                           ~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:20: Warning: Hardcoded string "mkebe2022@gmail.com", should use @string resource [HardcodedText]
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="mkebe2022@gmail.com" android:textSize="15sp" android:textColor="@color/text_primary"/>
+                                                                                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:24: Warning: Hardcoded string "📞 ", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📞 " android:textSize="20sp"/>
+                                                                                                       ~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:26: Warning: Hardcoded string "Téléphone", should use @string resource [HardcodedText]
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Téléphone" android:textSize="12sp" android:textColor="@color/text_secondary"/>
+                                                                                                           ~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:27: Warning: Hardcoded string "+221 77 123 45 67", should use @string resource [HardcodedText]
+                        <TextView android:id="@+id/tvPhone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+221 77 123 45 67" android:textSize="15sp" android:textColor="@color/text_primary"/>
+                                                                                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:31: Warning: Hardcoded string "📍 ", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📍 " android:textSize="20sp"/>
+                                                                                                       ~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:33: Warning: Hardcoded string "Localisation", should use @string resource [HardcodedText]
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Localisation" android:textSize="12sp" android:textColor="@color/text_secondary"/>
+                                                                                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:34: Warning: Hardcoded string "Temara, Maroc", should use @string resource [HardcodedText]
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Temara, Maroc" android:textSize="15sp" android:textColor="@color/text_primary"/>
+                                                                                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:38: Warning: Hardcoded string "🐙 ", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🐙 " android:textSize="20sp"/>
+                                                                                                       ~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:40: Warning: Hardcoded string "GitHub", should use @string resource [HardcodedText]
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GitHub" android:textSize="12sp" android:textColor="@color/text_secondary"/>
+                                                                                                           ~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:41: Warning: Hardcoded string "github.com/Kebe20222198", should use @string resource [HardcodedText]
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="github.com/Kebe20222198" android:textSize="15sp" android:textColor="@color/blue_primary"/>
+                                                                                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:45: Warning: Hardcoded string "📘 ", should use @string resource [HardcodedText]
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📘 " android:textSize="20sp"/>
+                                                                                                       ~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:47: Warning: Hardcoded string "Facebook", should use @string resource [HardcodedText]
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Facebook" android:textSize="12sp" android:textColor="@color/text_secondary"/>
+                                                                                                           ~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:48: Warning: Hardcoded string "facebook.com/mohamed.kebe.765663", should use @string resource [HardcodedText]
+                        <TextView android:id="@+id/tvFacebook" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="facebook.com/mohamed.kebe.765663" android:textSize="15sp" android:textColor="@color/blue_primary"/>
+                                                                                                                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_contact.xml:55: Warning: Hardcoded string "Envoyer un message", should use @string resource [HardcodedText]
+            android:text="Envoyer un message"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:18: Warning: Hardcoded string "Mohamed Kebe", should use @string resource [HardcodedText]
+                android:text="Mohamed Kebe" android:textColor="@color/white"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:21: Warning: Hardcoded string "Data and Software Engineer", should use @string resource [HardcodedText]
+                android:text="Data and Software Engineer" android:textColor="#B0C4DE" android:textSize="14sp"/>
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:23: Warning: Hardcoded string "📍 Rabat, Maroc", should use @string resource [HardcodedText]
+                android:text="📍 Rabat, Maroc" android:textColor="#B0C4DE"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:35: Warning: Hardcoded string "Parcours", should use @string resource [HardcodedText]
+                    android:text="Parcours" android:textSize="11sp" android:textColor="@color/text_secondary" android:layout_marginTop="4dp"/>
+                    ~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:43: Warning: Hardcoded string "Skills", should use @string resource [HardcodedText]
+                    android:text="Skills" android:textSize="11sp" android:textColor="@color/text_secondary" android:layout_marginTop="4dp"/>
+                    ~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:51: Warning: Hardcoded string "Projets", should use @string resource [HardcodedText]
+                    android:text="Projets" android:textSize="11sp" android:textColor="@color/text_secondary" android:layout_marginTop="4dp"/>
+                    ~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:59: Warning: Hardcoded string "Contact", should use @string resource [HardcodedText]
+                    android:text="Contact" android:textSize="11sp" android:textColor="@color/text_secondary" android:layout_marginTop="4dp"/>
+                    ~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:66: Warning: Hardcoded string "À propos", should use @string resource [HardcodedText]
+                android:text="À propos" android:textSize="18sp" android:textStyle="bold"
+                ~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:69: Warning: Hardcoded string "Élève Ingénieur en Data & Software Engineering à l'INSEA, Fullstack Developer et Fondateur de Wonkhaï.nnPassionné par l'architecture logicielle et l'exploitation des données, je conjugue une formation académique rigoureuse avec une expérience pratique du développement de solutions scalables. Actuellement concentré sur Wonkhaï, une Super-App ambitieuse, je maîtrise des technologies de pointe comme Elixir, Flutter et React Native.nnExpertise clé :n• Développement Mobile & Cross-Platform (Flutter, React Native)n• Ingénierie Backend (Elixir, Phoenix, systèmes distribués)n• Data Science & Text Mining (NLP, Scikit-learn, MongoDB)n• Esprit Entrepreneurial (Lead développeur de Wonkhaï)nnStack technique : Elixir, Java, Python, Flutter, React Native, API REST, JWT.", should use @string resource [HardcodedText]
+                android:text="Élève Ingénieur en Data &amp; Software Engineering à l'INSEA, Fullstack Developer et Fondateur de Wonkhaï.\n\nPassionné par l'architecture logicielle et l'exploitation des données, je conjugue une formation académique rigoureuse avec une expérience pratique du développement de solutions scalables. Actuellement concentré sur Wonkhaï, une Super-App ambitieuse, je maîtrise des technologies de pointe comme Elixir, Flutter et React Native.\n\nExpertise clé :\n• Développement Mobile &amp; Cross-Platform (Flutter, React Native)\n• Ingénierie Backend (Elixir, Phoenix, systèmes distribués)\n• Data Science &amp; Text Mining (NLP, Scikit-learn, MongoDB)\n• Esprit Entrepreneurial (Lead développeur de Wonkhaï)\n\nStack technique : Elixir, Java, Python, Flutter, React Native, API REST, JWT."
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:77: Warning: Hardcoded string "Derniers Projets", should use @string resource [HardcodedText]
+                    android:layout_weight="1" android:text="Derniers Projets"
+                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:80: Warning: Hardcoded string "›", should use @string resource [HardcodedText]
+                    android:text="›" android:textSize="24sp" android:textColor="@color/blue_primary"/>
+                    ~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:90: Warning: Hardcoded string "Application Portfolio", should use @string resource [HardcodedText]
+                            android:text="Application Portfolio" android:textSize="15sp" android:textStyle="bold" android:textColor="@color/text_primary"/>
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:92: Warning: Hardcoded string "Application Android de portfolio personnel", should use @string resource [HardcodedText]
+                            android:text="Application Android de portfolio personnel"
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:95: Warning: Hardcoded string "Java • Android", should use @string resource [HardcodedText]
+                            android:text="Java • Android" android:textSize="11sp" android:textColor="@color/blue_primary"/>
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:104: Warning: Hardcoded string "Mon QR Code", should use @string resource [HardcodedText]
+                android:text="Mon QR Code" android:backgroundTint="@color/navy_dark" android:layout_marginEnd="8dp"/>
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_profil.xml:107: Warning: Hardcoded string "Rendez-Vous", should use @string resource [HardcodedText]
+                android:text="Rendez-Vous" android:backgroundTint="@color/blue_primary"/>
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/fragment_projets.xml:6: Warning: Hardcoded string "Mes Projets", should use @string resource [HardcodedText]
+        android:text="Mes Projets" android:textSize="24sp" android:textStyle="bold"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspaces/Portfolio/PortfolioApp/app/src/main/res/layout/item_projet.xml:15: Warning: Hardcoded string "Voir Détails", should use @string resource [HardcodedText]
+                <Button android:id="@+id/btnDetails" android:layout_width="wrap_content" android:layout_height="32dp" android:text="Voir Détails" android:textSize="11sp" android:backgroundTint="@color/blue_primary" android:paddingStart="12dp" android:paddingEnd="12dp"/>
+                                                                                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "HardcodedText":
+   Hardcoding text attributes directly in layout files is bad for several
+   reasons:
+
+   * When creating configuration variations (for example for landscape or
+   portrait) you have to repeat the actual text (and keep it up to date when
+   making changes)
+
+   * The application cannot be translated to other languages by just adding
+   new translations for existing string resources.
+
+   There are quickfixes to automatically extract this hardcoded string into a
+   resource lookup.
+
+/workspaces/Portfolio/PortfolioApp/app/src/main/AndroidManifest.xml: Warning: The project references RTL attributes, but does not explicitly enable or disable RTL support with android:supportsRtl in the manifest [RtlEnabled]
+
+   Explanation for issues of type "RtlEnabled":
+   To enable right-to-left support, when running on API 17 and higher, you
+   must set the android:supportsRtl attribute in the manifest <application>
+   element.
+
+   If you have started adding RTL attributes, but have not yet finished the
+   migration, you can set the attribute to false to satisfy this lint check.
+
+0 errors, 105 warnings
